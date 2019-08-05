@@ -20,7 +20,7 @@ cp -r gopath/src/github.com/tghartland/gophercloud-vendorer/vendor/github.com/go
 
 echo "Replace import path in gophercloud"
 pushd gophercloud
-grep -l -R --include=*.go github.com/gophercloud/gophercloud | xargs sed -i 's/github.com\/gophercloud/k8s.io\/autoscaler\/cluster-autoscaler\/cloudprovider\/magnum/g'
+grep -l -R --include=*.go github.com/gophercloud/gophercloud | xargs sed -i 's github.com/gophercloud k8s.io/autoscaler/cluster-autoscaler/cloudprovider/magnum g'
 popd
 
 echo "Removing gopath"
