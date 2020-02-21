@@ -1,6 +1,12 @@
+# exit on error
+set -e
+
 echo "Creating gopath"
 mkdir gopath
 GOPATH=$(pwd)/gopath
+
+echo "Getting dependencies"
+go get gopkg.in/yaml.v2
 
 echo "Getting gophercloud"
 go get github.com/gophercloud/gophercloud
