@@ -11,6 +11,10 @@ go get gopkg.in/yaml.v2
 echo "Getting gophercloud"
 go get github.com/gophercloud/gophercloud
 
+pushd gopath/src/github.com/gophercloud/gophercloud
+git checkout tags/v0.8.0
+popd
+
 mkdir -p gopath/src/github.com/tghartland/gophercloud-vendorer/
 cp main.go gopath/src/github.com/tghartland/gophercloud-vendorer/
 
@@ -27,6 +31,7 @@ cp -r gopath/src/github.com/tghartland/gophercloud-vendorer/vendor/github.com/go
 echo "Replace import path in gophercloud"
 pushd gophercloud
 grep -l -R --include=*.go github.com/gophercloud/gophercloud | xargs sed -i 's github.com/gophercloud k8s.io/autoscaler/cluster-autoscaler/cloudprovider/magnum g'
+rm go.mod go.sum
 popd
 
 echo "Removing gopath"
