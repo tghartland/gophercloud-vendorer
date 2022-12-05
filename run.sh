@@ -1,6 +1,9 @@
 # exit on error
 set -e
 
+VERSION=$1
+echo "Going to vendor version $VERSION"
+
 echo "Creating gopath"
 mkdir gopath
 GOPATH=$(pwd)/gopath
@@ -12,7 +15,7 @@ echo "Getting gophercloud"
 go get github.com/gophercloud/gophercloud
 
 pushd gopath/src/github.com/gophercloud/gophercloud
-git checkout tags/v0.8.0
+git checkout tags/${VERSION}
 popd
 
 mkdir -p gopath/src/github.com/tghartland/gophercloud-vendorer/
